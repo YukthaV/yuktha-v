@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yuktha V — Junior SEO Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a1a;
+    --ink-light: #555;
+    --ink-muted: #888;
+    --accent: #2d5a3d;
+    --accent-light: #e8f0eb;
+    --accent-mid: #4a8c62;
+    --border: #e2e2de;
+    --bg: #f9f8f5;
+    --white: #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(249,248,245,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
+  }
+  .nav-logo { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 1.5rem; }
+  .nav-links a { font-size: 13px; color: var(--ink-light); text-decoration: none; letter-spacing: 0.02em; }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    max-width: 860px; margin: 0 auto;
+    padding: 5rem 2rem 4rem;
+    display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: center;
+  }
+  .hero-eyebrow {
+    font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent-mid); font-weight: 500; margin-bottom: 1rem;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.8rem, 6vw, 4.2rem);
+    line-height: 1.1; color: var(--ink); margin-bottom: 1.2rem;
+  }
+  .hero-desc { font-size: 16px; color: var(--ink-light); max-width: 480px; margin-bottom: 2rem; line-height: 1.75; }
+  .hero-cta { display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent); color: #fff;
+    padding: 10px 22px; border-radius: 6px;
+    font-size: 13px; font-weight: 500; text-decoration: none; letter-spacing: 0.02em;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: #234830; }
+  .btn-outline {
+    border: 1px solid var(--border); color: var(--ink-light);
+    padding: 10px 22px; border-radius: 6px;
+    font-size: 13px; font-weight: 400; text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+  .avatar-wrap { position: relative; }
+  .avatar-circle {
+    width: 140px; height: 140px; border-radius: 50%;
+    background: var(--accent-light);
+    border: 3px solid var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 42px; color: var(--accent);
+  }
+  .location-tag {
+    position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%);
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 20px; padding: 4px 12px;
+    font-size: 11px; color: var(--ink-light); white-space: nowrap;
+  }
+
+  /* STATS */
+  .stats-bar {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--white);
+  }
+  .stats-inner {
+    max-width: 860px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    padding: 0 2rem;
+  }
+  .stat {
+    padding: 2rem 1rem; text-align: center;
+    border-right: 1px solid var(--border);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.4rem; color: var(--accent); line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-desc { font-size: 12px; color: var(--ink-muted); line-height: 1.4; }
+
+  /* SECTIONS */
+  section { max-width: 860px; margin: 0 auto; padding: 4rem 2rem; }
+  .section-label {
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--accent-mid); font-weight: 500; margin-bottom: 2.5rem;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  h2.section-head {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem; margin-bottom: 0.5rem;
+  }
+
+  /* CASE STUDIES */
+  .cases { display: flex; flex-direction: column; gap: 16px; margin-top: 2rem; }
+  .case {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 10px; padding: 1.5rem 1.75rem;
+    display: grid; grid-template-columns: auto 1fr; gap: 1.25rem; align-items: start;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .case:hover { box-shadow: 0 4px 20px rgba(45,90,61,0.08); transform: translateY(-2px); }
+  .case-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.8rem; color: var(--accent-light);
+    line-height: 1; min-width: 40px; padding-top: 2px;
+    -webkit-text-stroke: 1.5px var(--accent-mid);
+  }
+  .case-tag {
+    display: inline-block; font-size: 11px; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--accent-mid);
+    background: var(--accent-light); border-radius: 4px;
+    padding: 2px 8px; margin-bottom: 8px;
+  }
+  .case h3 { font-size: 16px; font-weight: 500; color: var(--ink); margin-bottom: 8px; }
+  .case p { font-size: 14px; color: var(--ink-light); line-height: 1.7; }
+  .case-result {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 12px; font-size: 13px; font-weight: 500;
+    color: var(--accent); background: var(--accent-light);
+    padding: 4px 12px; border-radius: 20px;
+  }
+
+  /* SKILLS */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 2rem; }
+  .skill-group {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 10px; padding: 1.25rem 1.5rem;
+  }
+  .skill-group-title { font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-mid); font-weight: 500; margin-bottom: 10px; }
+  .skill-list { display: flex; flex-direction: column; gap: 6px; }
+  .skill-item { font-size: 13px; color: var(--ink-light); display: flex; align-items: center; gap: 8px; }
+  .skill-item::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+
+  /* TOOLS */
+  .tools-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1.5rem; }
+  .tool-chip {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 8px; padding: 8px 16px;
+    font-size: 13px; color: var(--ink-light);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .tool-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+
+  /* EXPERIENCE */
+  .exp { margin-top: 2rem; }
+  .exp-item { padding: 1.5rem 0; border-bottom: 1px solid var(--border); }
+  .exp-item:last-child { border-bottom: none; }
+  .exp-meta { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+  .exp-role { font-size: 15px; font-weight: 500; color: var(--ink); }
+  .exp-company { font-size: 13px; color: var(--accent-mid); font-weight: 500; }
+  .exp-date { font-size: 12px; color: var(--ink-muted); background: var(--bg); border: 1px solid var(--border); border-radius: 4px; padding: 3px 10px; }
+  .exp-bullets { margin-top: 10px; padding-left: 1rem; }
+  .exp-bullets li { font-size: 13px; color: var(--ink-light); line-height: 1.7; margin-bottom: 4px; }
+
+  /* CONTACT */
+  .contact-section {
+    background: var(--accent); color: #fff;
+    border-radius: 12px; padding: 3rem 2.5rem;
+    display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center;
+    margin: 0 2rem 4rem; max-width: 860px; margin-left: auto; margin-right: auto;
+  }
+  .contact-section h2 { font-family: 'DM Serif Display', serif; font-size: 1.8rem; margin-bottom: 6px; }
+  .contact-section p { font-size: 14px; opacity: 0.8; }
+  .contact-links { display: flex; flex-direction: column; gap: 10px; }
+  .contact-link {
+    background: rgba(255,255,255,0.12); color: #fff;
+    padding: 10px 18px; border-radius: 8px; text-decoration: none;
+    font-size: 13px; font-weight: 500; white-space: nowrap;
+    transition: background 0.2s;
+  }
+  .contact-link:hover { background: rgba(255,255,255,0.22); }
+
+  footer {
+    text-align: center; padding: 2rem;
+    font-size: 12px; color: var(--ink-muted);
+    border-top: 1px solid var(--border);
+  }
+
+  /* ANIMATIONS */
+  .fade-in { opacity: 0; transform: translateY(18px); animation: fadeUp 0.6s ease forwards; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.3s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    .hero { grid-template-columns: 1fr; text-align: center; }
+    .hero-desc { margin-left: auto; margin-right: auto; }
+    .hero-cta { justify-content: center; }
+    .avatar-wrap { margin: 0 auto; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+    .stat { border-right: none; border-bottom: 1px solid var(--border); }
+    .stat:nth-child(odd) { border-right: 1px solid var(--border); }
+    .stat:nth-child(3), .stat:nth-child(4) { border-bottom: none; }
+    .contact-section { grid-template-columns: 1fr; }
+    nav { padding: 0 1rem; }
+    .nav-links { gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">Yuktha V</a>
+  <div class="nav-links">
+    <a href="#work">Work</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<div class="hero fade-in">
+  <div>
+    <p class="hero-eyebrow">Junior SEO Analyst · Off-Page SEO</p>
+    <h1>Building links that move the needle.</h1>
+    <p class="hero-desc">1+ year specialising in off-page SEO, backlink strategy, and outreach for SaaS products on WooCommerce and Shopify. 600+ backlinks. 40+ guest posts. Real results.</p>
+    <div class="hero-cta">
+      <a class="btn-primary" href="#work">See my work</a>
+      <a class="btn-outline" href="mailto:yukthav003@gmail.com">Get in touch</a>
+    </div>
+  </div>
+  <div class="avatar-wrap fade-in delay-2">
+    <div class="avatar-circle">YV</div>
+    <div class="location-tag">📍 Bengaluru, India</div>
+  </div>
+</div>
+
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat fade-in">
+      <div class="stat-num">600+</div>
+      <div class="stat-desc">Backlinks from<br>DR 60+ domains</div>
+    </div>
+    <div class="stat fade-in delay-1">
+      <div class="stat-num">40+</div>
+      <div class="stat-desc">Guest posts on<br>high-authority sites</div>
+    </div>
+    <div class="stat fade-in delay-2">
+      <div class="stat-num">22K→14K</div>
+      <div class="stat-desc">Ahrefs rank<br>improvement</div>
+    </div>
+    <div class="stat fade-in delay-3">
+      <div class="stat-num">1 yr+</div>
+      <div class="stat-desc">Off-page SEO<br>experience</div>
+    </div>
+  </div>
+</div>
+
+<section id="work">
+  <div class="section-label">Case studies</div>
+  <div class="cases">
+    <div class="case">
+      <div class="case-num">01</div>
+      <div>
+        <span class="case-tag">Backlink campaign</span>
+        <h3>600+ backlinks from DR 60+ domains — in 12 months</h3>
+        <p>Built a scalable outreach pipeline at PluginHive targeting high-authority domains. Used Ahrefs Link Intersect to find prospects, wrote personalised cold emails, and managed the full collaboration cycle from pitch to placement. Focused on editorial relevance over volume.</p>
+        <div class="case-result">↑ Ahrefs rank moved from 22,000 to 14,000</div>
+      </div>
+    </div>
+    <div class="case">
+      <div class="case-num">02</div>
+      <div>
+        <span class="case-tag">Guest posting</span>
+        <h3>40+ editorial placements on high-DR websites</h3>
+        <p>Researched editorial guidelines, pitched relevant topics aligned to WooCommerce and Shopify plugin audiences, and coordinated content delivery. Each placement was chosen for topical relevance to drive both link equity and referral traffic.</p>
+        <div class="case-result">↑ Domain authority and organic visibility improved</div>
+      </div>
+    </div>
+    <div class="case">
+      <div class="case-num">03</div>
+      <div>
+        <span class="case-tag">Broken link building</span>
+        <h3>Competitor backlink recovery at scale</h3>
+        <p>Audited competitor backlink profiles using Ahrefs to identify 404-returning links. Executed targeted outreach to webmasters with relevant replacement pages. Also ran a lost backlink recovery programme to maintain profile health and prevent domain rating erosion.</p>
+        <div class="case-result">↑ Backlink profile quality sustained over time</div>
+      </div>
+    </div>
+    <div class="case">
+      <div class="case-num">04</div>
+      <div>
+        <span class="case-tag">Digital PR & community SEO</span>
+        <h3>Brand mentions and UGC visibility on Reddit, Medium, Slack</h3>
+        <p>Executed digital PR initiatives to earn natural brand mentions through blog features and collaborations. Built community presence on Reddit, Medium, and Slack to drive UGC-based visibility and referral traffic for SaaS plugin products.</p>
+        <div class="case-result">↑ Natural backlinks and brand awareness grown</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-label">Skills & tools</div>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-title">Off-page SEO</div>
+      <div class="skill-list">
+        <div class="skill-item">Backlink strategy & execution</div>
+        <div class="skill-item">Cold outreach campaigns</div>
+        <div class="skill-item">Guest posting</div>
+        <div class="skill-item">Broken link building</div>
+        <div class="skill-item">Link exchange & partnerships</div>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Analysis</div>
+      <div class="skill-list">
+        <div class="skill-item">Competitor backlink analysis</div>
+        <div class="skill-item">Link Intersect analysis</div>
+        <div class="skill-item">Backlink quality monitoring</div>
+        <div class="skill-item">Lost link recovery</div>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Content & PR</div>
+      <div class="skill-list">
+        <div class="skill-item">Digital PR</div>
+        <div class="skill-item">UGC (Reddit, Medium, Slack)</div>
+        <div class="skill-item">Community engagement</div>
+        <div class="skill-item">Content marketing</div>
+        <div class="skill-item">Social media promotion</div>
+      </div>
+    </div>
+  </div>
+  <div class="tools-row">
+    <div class="tool-chip"><div class="tool-dot"></div>Ahrefs</div>
+    <div class="tool-chip"><div class="tool-dot"></div>Google Analytics</div>
+    <div class="tool-chip"><div class="tool-dot"></div>Google Search Console</div>
+    <div class="tool-chip"><div class="tool-dot"></div>Google Sheets / Excel</div>
+    <div class="tool-chip"><div class="tool-dot"></div>WooCommerce</div>
+    <div class="tool-chip"><div class="tool-dot"></div>Shopify</div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="section-label">Experience</div>
+  <div class="exp">
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div>
+          <div class="exp-role">Junior SEO Analyst — Off-Page SEO</div>
+          <div class="exp-company">PluginHive</div>
+        </div>
+        <div class="exp-date">Jun 2025 – Present</div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Acquired 600+ high-quality backlinks from DR 60+ domains through targeted outreach and partnerships.</li>
+        <li>Secured 40+ guest posts on high domain rating websites.</li>
+        <li>Implemented broken link building and lost backlink recovery strategies.</li>
+        <li>Executed digital PR via brand mentions, blog features, and community SEO on Reddit and Medium.</li>
+        <li>Tracked SEO performance using Google Analytics and Google Search Console.</li>
+      </ul>
+    </div>
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div>
+          <div class="exp-role">Product Specialist (Internship)</div>
+          <div class="exp-company">PluginHive</div>
+        </div>
+        <div class="exp-date">Feb 2025 – May 2025</div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Learned WooCommerce and Shopify plugin ecosystems including onboarding and testing.</li>
+        <li>Gained hands-on experience in backlink acquisition and outreach communication.</li>
+        <li>Identified link-building opportunities and outreach prospects for the SEO team.</li>
+      </ul>
+    </div>
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div>
+          <div class="exp-role">BE — Engineering</div>
+          <div class="exp-company">East Point College of Engineering and Technology</div>
+        </div>
+        <div class="exp-date">2021 – 2025</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="contact-section" id="contact">
+  <div>
+    <h2>Let's work together.</h2>
+    <p>Open to junior SEO roles, link-building projects, and outreach collaborations.</p>
+  </div>
+  <div class="contact-links">
+    <a class="contact-link" href="mailto:yukthav003@gmail.com">✉ yukthav003@gmail.com</a>
+    <a class="contact-link" href="https://linkedin.com/in/yuktha-v-390195228" target="_blank">in LinkedIn Profile</a>
+    <a class="contact-link" href="tel:9886890689">📞 9886890689</a>
+  </div>
+</div>
+
+<footer>
+  Built with GitHub Pages · Yuktha V · Junior SEO Analyst · Bengaluru
+</footer>
+
+</body>
+</html>
